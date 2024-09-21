@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./Modal.css";
+import "./modal.css";
 
 //import { default as FormularioBorrar, default as FormularioEditar } from "./formularioBorrar";
 //import FormularioCrearAcudiente from './formularioCrearAcudiente';
