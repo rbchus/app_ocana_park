@@ -1,0 +1,325 @@
+/* Contenedor del formulario */
+.container-form {
+  background-color: #fff;
+  border: 4px solid #bec2c6;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.container-all {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  border-radius: 1rem;
+}
+
+.container-head {
+  width: 100%;
+  display: flex;
+  align-content: space-between;
+}
+
+hr {
+  background-color: red;
+  width: 100%;
+}
+
+.ancho33 {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.ancho25 {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.ancho50 {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.general-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.general-horizontal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Título del formulario */
+.container h1 {
+  font-size: 2.5rem;
+  color: #343a40;
+  margin-bottom: 20px;
+}
+
+/* Contenedor de cada campo de entrada */
+.input-container {
+  margin-bottom: 15px;
+}
+
+/* Etiquetas de los campos */
+.input-container label {
+  font-size: 1.2rem;
+  color: #4682b4;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Campos de entrada */
+.input-container input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #87ceeb;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* Botón de envío */
+button {
+  background-color: #32cd32;
+  color: white;
+  padding: 10px 15px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #228b22;
+}
+
+.logo {
+  width: 100px;
+}
+
+.icono {
+  width: 150px;
+}
+
+.iconoGenero {
+  width: 40px;
+}
+
+.formularioTxt {
+  font-size: large;
+  text-align: center;
+}
+
+.ancho {
+  width: 7rem;
+  margin: 0.5rem;
+}
+
+.container-button {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+}
+
+.container-juegos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+}
+
+.alto {
+  height: 2rem;
+}
+
+.terminado {
+  background-color: #f2c4bc;
+}
+
+.jugando {
+  background-color: #b7f374;
+}
+
+.espera {
+  background-color: #fff;
+}
+
+.altoJuego {
+  height: 2.5rem;
+}
+
+.anchoDashBoard {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.textoCentrado {
+  text-align: center;
+}
+
+.textoLink {
+  text-decoration: none;
+}
+
+.campos {
+  margin-top: 2rem;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 10px 15px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 50px;
+}
+
+.pagination button.active {
+  background-color: #333;
+}
+
+.pagination button:hover {
+  background-color: #45a049;
+}
+
+.boton-icono {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.icono-boton {
+  margin-right: 8px;
+}
+
+/* Responsividad */
+@media (max-width: 400px) {
+  .container {
+    padding: 15px;
+  }
+  .container h1 {
+    font-size: 2rem;
+  }
+  button {
+    font-size: 1rem;
+  }
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.gray-button {
+  display: block;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #5b5e5b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.gray-button:hover {
+  background-color: #5b5e5b;
+}
+
+.add-button {
+  display: block;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #ffbf01;
+}
+
+table {
+  width: 1500px;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+thead {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+}
+
+th td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.product-image {
+  width: 50px;
+  height: auto;
+  border-radius: 4px;
+}
+
+.edit-button .delete-button {
+  padding: 8px 12px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+}
+
+.edit-button {
+  background-color: #2196f3;
+}
+
+.blanco {
+  background-color: #ffffff;
+  border-bottom: 1px solid red;
+}
+
+.edit-button:hover {
+  background-color: #1976d2;
+}
+
+.delete-button {
+  background-color: #f44336;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
