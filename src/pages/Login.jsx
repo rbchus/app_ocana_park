@@ -27,7 +27,7 @@ const Login = () => {
           console.log(response.message);
          // console.log ( " TOKEN " + response.data)
           saveToken(response.data);
-          navigate('/ ');
+          navigate('/');
         } else {
           console.log(response.message);
           console.log(" no estas logeaddo ");
@@ -55,21 +55,24 @@ const Login = () => {
   };
 
   return (
+    <div className="container-login">
     <div className="container-form">
-      <h2>Login</h2>
+      <h2 className='formularioTxt'>INICIO SESION</h2>
       <form className="login-form"  onSubmit={handleLogin}>
       <div className="input-container">
-          <label>Nombre de Usuario</label>
-          <input
-            type="text"
+         
+          <input className='formularioTxt'
+          placeholder='USUARIO'
+            type="text" 
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
         <div className="input-container">
-          <label>Contraseña</label>
-          <input
+         
+          <input className='formularioTxt'
+            placeholder='CONTRASEÑA'
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -79,6 +82,7 @@ const Login = () => {
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <button className='add-button ancho' type="submit">Login</button>
       </form>
+    </div>
     </div>
   );
 };

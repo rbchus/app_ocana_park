@@ -1,5 +1,5 @@
 * {
-    margin: auto;
+  
     padding: 0;
     box-sizing: border-box;
 
@@ -17,11 +17,12 @@ body {
   
 .dashboard {
     display: flex;
+    justify-content: center;
     align-items: flex-start;
-    align-content: flex-start;
-    height: 90vh;
-    width: 90vw;
+    height: 95vh;
+    width: 95vw;
     border-radius: 1rem ;
+    padding: 1rem;
     background-color: gray ;
  
    
@@ -29,13 +30,12 @@ body {
   }
   
   .sidebar {
-    width: 250px;
-    background-color: #343a40;
+    background-color: #2470bc;
     color: white;
-    padding: 20px;
     box-sizing: border-box;
     border-radius: 1rem ;
     border: 1px solid #ccc;
+    
    
   }
   
@@ -51,7 +51,7 @@ body {
   }
   
   .sidebar ul li {
-    margin: 20px 0;
+    
   }
   
   .sidebar ul li a {
@@ -68,17 +68,16 @@ body {
   }
   
   .content {
-    flex-grow: 1;
-    padding: 40px;
+    width: 95%;
+    padding: 1rem;
     background-color: #ffffff;
     box-sizing: border-box;
     border-radius: 1rem ;
     border: 2px solid #ccc;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    align-content: flex-start;
+    justify-content: center;
     height: 90vh;
+    
+    
   }
   
   .content h1 {

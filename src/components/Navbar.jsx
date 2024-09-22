@@ -13,13 +13,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sidebar general-vertical">
+    <nav className="sidebar general-horizontal">
       <img className='logo' src="./img/ocanaPark_white.png" />
-    <ul>
-    <li ><Link  to="/">Inicio</Link></li>
-     
-          <li ><Link  to="/ninos">Niños</Link></li>
-          <li ><Link  to="/juegos">Juegos</Link></li>
+    <ul className='link-menu'>
+          <li ><Link  className='font-menu' to="/ninos">ADMIN NIÑOS</Link></li>
+          <li ><Link  className='font-menu' to="/juegos">ADMIN JUEGOS</Link></li>
     </ul>
   
     <button className="delete-button ancho" onClick={handleLogout}>Logout</button>

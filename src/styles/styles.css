@@ -1,5 +1,6 @@
 /* Contenedor del formulario */
 .container-form {
+  width: 50%;
   background-color: #fff;
   border: 4px solid #bec2c6;
   border-radius: 15px;
@@ -8,18 +9,30 @@
   padding: 10px;
 }
 
+.container-login {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .container-all {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-
+ align-items: center;
   border-radius: 1rem;
+
 }
 
 .container-head {
-  width: 100%;
+  width: 90%;
+ 
+  padding: 5px;
+  height: 60px;
   display: flex;
-  align-content: space-between;
+  justify-content: center;
+  align-items: center;
+
 }
 
 hr {
@@ -29,6 +42,13 @@ hr {
 
 .ancho33 {
   width: 33%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.ancho20 {
+  width: 20%;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -49,13 +69,29 @@ hr {
 }
 
 .general-vertical {
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
 
+.link-menu {
+  width: 50%;
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  font-size: 25px;
+}
+
+.font-menu {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ font-size: 60px;
+ font-weight: 700;
+}
+
 .general-horizontal {
+  width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,7 +144,7 @@ button:hover {
 }
 
 .logo {
-  width: 100px;
+  width: 60px;
 }
 
 .icono {
@@ -137,9 +173,8 @@ button:hover {
 
 .container-juegos {
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  width: 50%;
+ 
 }
 
 .alto {
@@ -222,18 +257,7 @@ button:hover {
   margin-right: 8px;
 }
 
-/* Responsividad */
-@media (max-width: 400px) {
-  .container {
-    padding: 15px;
-  }
-  .container h1 {
-    font-size: 2rem;
-  }
-  button {
-    font-size: 1rem;
-  }
-}
+
 
 h1 {
   text-align: center;
@@ -256,8 +280,9 @@ h1 {
 }
 
 .add-button {
+  width: 100px;
   display: block;
-  margin-bottom: 20px;
+  
   padding: 10px 20px;
   background-color: #4caf50;
   color: white;
@@ -271,9 +296,13 @@ h1 {
 }
 
 table {
-  width: 1500px;
+  width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
+}
+
+.container-table{
+ width: 95%;
 }
 
 thead {
@@ -305,6 +334,7 @@ th td {
 
 .edit-button {
   background-color: #2196f3;
+  width: 100px;
 }
 
 .blanco {
@@ -318,6 +348,7 @@ th td {
 
 .delete-button {
   background-color: #f44336;
+  width: 100px;
 }
 
 .delete-button:hover {

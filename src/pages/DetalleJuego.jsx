@@ -128,17 +128,17 @@ export default function DetalleJuego({
       <td className="formularioTxt">{tiempoRestante} </td>
       <td className="formularioTxt blanco">{tiempoMas} </td>
       
-      <td className="container-juegos altoJuego">
+      <td className="container-juegos altoJuego formularioTxt">
         {estado == 0 ? (
-          <button className="add-button ancho " onClick={activar}>
+          <button className="add-button" onClick={activar}>
             Activar
           </button>
         ) : (
-          <h2> {msgEstado} </h2>
+          <h4> {msgEstado} </h4>
         )}
 
         {estilo == "terminado" ? (
-          <button className="delete-button ancho " onClick={sacarNino}>
+          <button className="delete-button" onClick={sacarNino}>
             X
           </button>
         ) : (

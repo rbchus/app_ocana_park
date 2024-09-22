@@ -4,6 +4,7 @@ import { getAllNinos } from "../services/ninos.js";
 import "../styles/styles.css";
 import { isAuthenticated } from "../utils/auth";
 
+import Navbar from "../components/Navbar.jsx";
 import DetalleNino from "./DetalleNino.jsx";
 import Modal from "./modal.jsx";
 
@@ -23,10 +24,10 @@ const Ninos = () => {
   };
 
   const setModal = (tipo, objeto) => {
-    console.log ( " ++ DESDE NINOS  tipo ++  " + JSON.stringify(tipo))
-    console.log ( "  ++ DESDE NINOS objeto ++ " + JSON.stringify(objeto))
+    console.log(" ++ DESDE NINOS  tipo ++  " + JSON.stringify(tipo));
+    console.log("  ++ DESDE NINOS objeto ++ " + JSON.stringify(objeto));
     setEmodal(tipo);
-    setObejetoNino(objeto)
+    setObejetoNino(objeto);
 
     if (tipo == 0 && objeto != 0) {
       setTimeout(() => {
@@ -34,16 +35,6 @@ const Ninos = () => {
         fetchNinos();
       }, 500);
     }
-
-
-
-  
-
-
-   
-
-
-
 
     setTimeout(() => {
       setIsModalOpen(true);
@@ -101,18 +92,17 @@ const Ninos = () => {
 
   return (
     <div className="container-all">
-      <div className="container-head ">
-        <div className="ancho25">
-         
-          <h2>Niños</h2>{" "}
+      <Navbar />
+      <div className="container-head">
+        <div>
+          <h2>Niños</h2>
         </div>
         <div className="ancho25">
-       
           <h3>{errorMessage}</h3>
         </div>
 
         <div className="ancho25">
-          <input
+          <input className="formularioTxt"
             type="text"
             placeholder="Buscar por nombre o apellido"
             value={searchTerm}
@@ -121,13 +111,13 @@ const Ninos = () => {
         </div>
 
         <div className="ancho25">
-          
           <button className="add-button ancho" onClick={() => setModal(0, 0)}>
             Agregar
           </button>
         </div>
       </div>
-       <hr/>
+
+      <hr />
       <div className="container-table">
         <table>
           <thead>

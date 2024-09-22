@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from '../components/Navbar.jsx';
 import { getAllJuegos, updateJuego } from "../services/juegos.js";
 import "../styles/styles.css";
 import { isAuthenticated } from "../utils/auth";
@@ -233,16 +234,17 @@ const Juegos = () => {
 
   return (
     <div className="container-all">
-      <div className="container-head ">
-        <div className="">
-          <h2>Juegos</h2>{" "}
+       <Navbar />
+       <div className="container-head">
+        <div >
+          <h2>Juegos</h2>
         </div>
-        <div className="">
+        <div className="ancho20">
           <h3>{errorMessage}</h3>
         </div>
 
-        <div className="">
-          <input
+        <div className="ancho20">
+          <input className="formularioTxt"
             type="text"
             placeholder="Buscar por nombre o apellido"
             value={searchTerm}
@@ -250,13 +252,13 @@ const Juegos = () => {
           />
         </div>
 
-        <div>
+        <div className="ancho20">
           <button className="add-button" onClick={handleActivo}>
-            Por Activar
+            Inicar
           </button>
         </div>
 
-        <div>
+        <div className="ancho20">
           <button className="delete-button" onClick={handleJugando}>
             Jugando
           </button>
