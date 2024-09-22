@@ -103,7 +103,7 @@ export default function  DetalleNino ({id, nombre,  apellido,  genero, celular, 
         
         
 
-        <td className="container-juegos altoJuego">
+        <td className="container-juegos altoJuego formularioTxt">
         <button className="add-button ancho " onClick={tiempo} >Tiempo</button>
         <button className="edit-button ancho " onClick={editar} >Editar</button>
         <button className="delete-button ancho" onClick={eliminar}>Eliminar</button>
