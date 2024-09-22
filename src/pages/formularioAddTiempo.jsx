@@ -147,7 +147,7 @@ const FormularioAddTiempo = ({ nino, modal }) => {
 
         if (response.status) {
           setRta(response.data.message)
-          modal(0, objetoEnviar )
+          modal(0, objetoEnviar , 2)
         }
         else
         setRta(response.message)
@@ -168,7 +168,7 @@ const FormularioAddTiempo = ({ nino, modal }) => {
     <div className="App">
       <img
         className="iconoGenero"
-        src={`./img/${nino.genero.toLowerCase()}.svg`}
+        src={`./img/${nino.genero}.svg`}
       />
       <h2>
         Agregar Tiempo y Juego <br /> {nino.nombre.toUpperCase()}{" "}

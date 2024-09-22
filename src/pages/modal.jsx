@@ -14,10 +14,10 @@ const Modal = ({ isOpen, onClose, tipo, nino , modal}) => {
   const [objetoNino, setObejetoNino] = useState("");
   useEffect(() => {  () => {onClose} }, [tipo]);
 
-  const setModal = (tipo, id) => {
+  const setModal = (tipo, id, pantalla) => {
     //console.log(" ++ MODAL ++ " + JSON.stringify(tipo));
     //console.log("  ++ MODAL ++ " + JSON.stringify(id));
-    modal(tipo, id )
+    modal(tipo, id, pantalla )
     setObejetoNino(id)
   };
 //

@@ -75,7 +75,7 @@ const FormularioBorrarNino = ({ nino, modal }) => {
 
         if (response.status) {
           setRta(response.data.message)
-          modal(0, objetoEnviar )
+          modal(0, objetoEnviar ,1 )
         }
         else
         setRta(response.message)

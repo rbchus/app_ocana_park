@@ -159,11 +159,16 @@ button:hover {
 }
 
 .icono {
-  width: 150px;
+  width: 200px;
 }
 
 .iconoGenero {
   width: 40px;
+}
+
+.ico {
+  width: 70px;
+  cursor: pointer;
 }
 
 .formularioTxt {
