@@ -147,6 +147,10 @@ button:hover {
   width: 60px;
 }
 
+.logoGrande{
+  width: 200px;
+}
+
 .icono {
   width: 150px;
 }
@@ -156,9 +160,15 @@ button:hover {
 }
 
 .formularioTxt {
-  font-size: large;
+  font-size:medium;
   text-align: center;
 }
+
+.formularioTxtDetalle{
+  font-size:small;
+  text-align: center;
+}
+
 .centrar-boton {
   width: 100%;
   display: flex;

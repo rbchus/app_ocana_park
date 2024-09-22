@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import "./App.css";
 //import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
 import Juegos from "./pages/Juegos";
 import Login from "./pages/Login";
 import Ninos from "./pages/Ninos";
@@ -14,7 +15,7 @@ const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: <Juegos />, // Componente para la página de inicio
+      element: <Home />, // Componente para la página de inicio
     },
     {
       path: "/login",

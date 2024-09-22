@@ -91,19 +91,19 @@ export default function  DetalleNino ({id, nombre,  apellido,  genero, celular, 
         
      
 
-        <td className="formularioTxt">{nombre.toUpperCase()} </td>
-        <td className="formularioTxt">{apellido.toUpperCase()} </td>
+        <td className="formularioTxtDetalle">{nombre.toUpperCase()} </td>
+        <td className="formularioTxtDetalle">{apellido.toUpperCase()} </td>
         <td  > <img className='iconoGenero' src={`./img/${genero.toLowerCase()}.svg`} /> </td>
-        <td className="formularioTxt">{celular} </td>
-        <td className="formularioTxt" >{fecha(nacimiento)} </td>
-        <td className="formularioTxt">{ calcularEdad(nacimiento)} </td>
+        <td className="formularioTxtDetalle">{celular} </td>
+        <td className="formularioTxtDetalle" >{fecha(nacimiento)} </td>
+        <td className="formularioTxtDetalle">{ calcularEdad(nacimiento)} </td>
        
-        <td className="formularioTxt">{fechaHora(ingreso)} </td>
+        <td className="formularioTxtDetalle">{fechaHora(ingreso)} </td>
 
         
         
 
-        <td className="container-juegos altoJuego formularioTxt">
+        <td className="container-juegos altoJuego formularioTxtDetalle">
         <button className="add-button ancho " onClick={tiempo} >Tiempo</button>
         <button className="edit-button ancho " onClick={editar} >Editar</button>
         <button className="delete-button ancho" onClick={eliminar}>Eliminar</button>

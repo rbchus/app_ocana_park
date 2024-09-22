@@ -87,8 +87,11 @@ export const getAllJuegos = async (fecha) => {
          //console.log ( " RESPONSE SERVICIO " + JSON.stringify(response))
          return(response);
          
-         
        }
+
+
+
+
      } catch (error) {
        //console.log ( " RESPONSE SERVICIO " + JSON.stringify(error.response))
        if (error.response) {

@@ -59,7 +59,7 @@ const Ninos = () => {
 
     setTimeout(() => {
       fetchNinos();
-    }, 1000);
+    }, 500);
 
 
   
@@ -76,7 +76,7 @@ const Ninos = () => {
   /*  ******************************************************** */
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  const [itemsPerPage] = useState(15);
 
   // Calcular los índices para los datos paginados
   const indexOfLastItem = currentPage * itemsPerPage;
