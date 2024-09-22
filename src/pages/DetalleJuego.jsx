@@ -13,6 +13,7 @@ export default function DetalleJuego({
   final,
   modal,
   liberar,
+  msjTitulo
 }) {
   //console.log(" * estado *    " + JSON.stringify(estado));
 
@@ -48,7 +49,7 @@ export default function DetalleJuego({
 
   let cuentaDeMas = 0
   let cuentaRegresivaEnSegundos = convertirASegundos(final);
-  console.log(" * cuentaRegresivaEnSegundos *    " + cuentaRegresivaEnSegundos);
+  //console.log(" * cuentaRegresivaEnSegundos *    " + cuentaRegresivaEnSegundos);
 
   //setSegundosRestantes(Number.parseInt(cuentaRegresivaEnSegundos, 10));
 
@@ -57,7 +58,9 @@ export default function DetalleJuego({
   //setSegundosRestantes(cuentaRegresivaEnSegundos);
 
   useEffect(() => {
+    msjTitulo(estado)
     if (estado == 1) {
+     
       const intervalo = setInterval(() => {
         //------------------------
         const tiempoActual = new Date();
@@ -84,13 +87,16 @@ export default function DetalleJuego({
       }, 5000); // Cada 60 segundos
       return () => clearInterval(intervalo); // Limpia el intervalo cuando el componente se desmonte
     } else {
+     
       setTiempoRestante("sin iniciar");
     }
   }, [cuentaRegresivaEnSegundos]);
 
   // Actualizar el tiempo restante cada vez que cambian los segundos restantes
   useEffect(() => {
+    msjTitulo(estado)
     if (estado == 1) {
+ 
       //------------------------
       const tiempoActual = new Date();
       const tiempoFormateado = convertirATiempo(
@@ -112,6 +118,7 @@ export default function DetalleJuego({
 
       //----------------------------------------
     } else {
+     
       setTiempoRestante("sin iniciar");
     }
   }, []);

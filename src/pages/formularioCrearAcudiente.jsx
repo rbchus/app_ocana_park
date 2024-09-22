@@ -63,7 +63,7 @@ const FormularioCrearAcudiente = () => {
 
     setAcudiente(objetoEnviar).then ((response) => {
  
-      console.log (" ---- response ----    " + JSON.stringify(response))
+      //console.log (" ---- response ----    " + JSON.stringify(response))
 
         if (response.status)
           setRta(response.data.message)
@@ -81,7 +81,7 @@ const FormularioCrearAcudiente = () => {
    
     
 
-    console.log (" ENVIAR API     " + JSON.stringify(objetoEnviar))
+    //console.log (" ENVIAR API     " + JSON.stringify(objetoEnviar))
     //alert(`Datos enviados: \nId ${formData.id}\nNombre: ${formData.nombre}\nPrecio: ${formData.precio}\nFoto: ${formData.foto}\nDescripcion: ${formData.descripcion}`);
   };
 

@@ -22,7 +22,7 @@ const FormularioBorrarNino = ({ nino, modal }) => {
 }, [])
 
 
- console.log (" Editar ---- " + JSON.stringify(nino))
+// console.log (" Editar ---- " + JSON.stringify(nino))
 
   // Definimos el estado para cada campo del formulario
   const [formData, setFormData] = useState({
@@ -71,7 +71,7 @@ const FormularioBorrarNino = ({ nino, modal }) => {
 
     delteNino(nino.id).then ((response) => {
  
-      console.log (" ---- response deelteNino ----    " + JSON.stringify(response))
+     // console.log (" ---- response deelteNino ----    " + JSON.stringify(response))
 
         if (response.status) {
           setRta(response.data.message)

@@ -1,0 +1,43 @@
+.loading-container {
+  position: fixed; /* Fijado para que permanezca en la vista, incluso cuando se desplaza */
+  top: 50%; /* Centrado verticalmente */
+  left: 50%; /* Centrado horizontalmente */
+  transform: translate(-50%, -50%); /* Corrección para centrar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw; /* Ocupa el ancho completo de la pantalla */
+  height: 100vh; /* Ocupa la altura completa de la pantalla */
+  background-color: rgba(255, 255, 255, 0.8); /* Opcional: fondo semitransparente */
+  z-index: 9999; /* Asegura que esté encima del contenido */
+}
+
+.loading-spinner {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border: 8px solid rgba(0, 0, 0, 0.1); /* Círculo gris */
+  border-top: 8px solid #3498db; /* Círculo de carga azul */
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+}
+
+/* Animación de rotación */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner .icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  color: #00b9b4; /* Color del icono SVG */
+}

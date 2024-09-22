@@ -25,7 +25,7 @@ function obtenerFechaActual() {
   return `${año}-${mes}-${dia}`;
 }
 
-console.log(obtenerFechaActual());
+//console.log(obtenerFechaActual());
 
   
   const [formData, setFormData] = useState({
@@ -90,7 +90,7 @@ console.log(obtenerFechaActual());
        setRta(response.data.message)
    })
 
-    console.log (" ENVIAR API     " + JSON.stringify(objetoEnviar))
+    //console.log (" ENVIAR API     " + JSON.stringify(objetoEnviar))
     //alert(`Datos enviados: \nId ${formData.id}\nNombre: ${formData.nombre}\nPrecio: ${formData.precio}\nFoto: ${formData.foto}\nDescripcion: ${formData.descripcion}`);
   };
 

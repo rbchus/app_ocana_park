@@ -61,9 +61,9 @@ const FormularioAddTiempo = ({ nino, modal }) => {
   };
 
   useEffect(() => {
-    console.log(
-      ` la zona de juego fue ${juego} y el  id de precio fue ${precio}`
-    );
+    //console.log(
+   //   ` la zona de juego fue ${juego} y el  id de precio fue ${precio}`
+   // );
 
     const resultado = zonas
       .filter((zona) => zona.id == juego)
@@ -73,12 +73,12 @@ const FormularioAddTiempo = ({ nino, modal }) => {
       }));
 
     try {
-      console.log(" resultado " + JSON.stringify(resultado));
+     // console.log(" resultado " + JSON.stringify(resultado));
       _setJuego(resultado[0].name);
       _setTiempo(resultado[0].price[0].name);
       _setPrecio(resultado[0].price[0].price);
     } catch (error) {
-      console.log(" resultado  error" + JSON.stringify(error));
+      //console.log(" resultado  error" + JSON.stringify(error));
     }
 
     if (juego != "" && juego != "") {
@@ -99,7 +99,7 @@ const FormularioAddTiempo = ({ nino, modal }) => {
 
   useEffect(() => {}, []);
 
-  console.log(" Tiempo ---- " + JSON.stringify(nino));
+ // console.log(" Tiempo ---- " + JSON.stringify(nino));
 
   // Definimos el estado para cada campo del formulario
   const [formData, setFormData] = useState({
@@ -143,7 +143,7 @@ const FormularioAddTiempo = ({ nino, modal }) => {
 
     setJuegos(objetoEnviar).then ((response) => {
  
-      console.log (" ---- response setJuegos ----    " + JSON.stringify(response))
+      //console.log (" ---- response setJuegos ----    " + JSON.stringify(response))
 
         if (response.status) {
           setRta(response.data.message)
@@ -156,11 +156,11 @@ const FormularioAddTiempo = ({ nino, modal }) => {
        
    })
    .catch ((error) => {
-       console.log ("Error    " + error)
+      // console.log ("Error    " + error)
        setRta(response.data.message)
    })
 
-    console.log(" ENVIAR API     " + JSON.stringify(objetoEnviar));
+   // console.log(" ENVIAR API     " + JSON.stringify(objetoEnviar));
     //alert(`Datos enviados: \nId ${formData.id}\nNombre: ${formData.nombre}\nPrecio: ${formData.precio}\nFoto: ${formData.foto}\nDescripcion: ${formData.descripcion}`);
   };
 

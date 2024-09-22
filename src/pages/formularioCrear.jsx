@@ -78,7 +78,7 @@ const FormularioCrear = () => {
    
     
 
-    console.log (" ENVIAR API     " + JSON.stringify(objetoEnviar))
+    //console.log (" ENVIAR API     " + JSON.stringify(objetoEnviar))
     //alert(`Datos enviados: \nId ${formData.id}\nNombre: ${formData.nombre}\nPrecio: ${formData.precio}\nFoto: ${formData.foto}\nDescripcion: ${formData.descripcion}`);
   };
 

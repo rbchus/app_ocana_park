@@ -51,7 +51,7 @@ export const getAllJuegos = async (fecha) => {
             'Access-Control-Allow-Origin': '*' 
              }
           });
-          console.log ( " setJuegos SERVICIO " + JSON.stringify(response))
+         // console.log ( " setJuegos SERVICIO " + JSON.stringify(response))
         if (response.status == 200) {
           return(response);
           

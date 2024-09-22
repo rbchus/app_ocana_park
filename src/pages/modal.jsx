@@ -15,8 +15,8 @@ const Modal = ({ isOpen, onClose, tipo, nino , modal}) => {
   useEffect(() => {  () => {onClose} }, [tipo]);
 
   const setModal = (tipo, id) => {
-    console.log(" ++ MODAL ++ " + JSON.stringify(tipo));
-    console.log("  ++ MODAL ++ " + JSON.stringify(id));
+    //console.log(" ++ MODAL ++ " + JSON.stringify(tipo));
+    //console.log("  ++ MODAL ++ " + JSON.stringify(id));
     modal(tipo, id )
     setObejetoNino(id)
   };
