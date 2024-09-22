@@ -128,7 +128,7 @@ export default function DetalleJuego({
       <td className="formularioTxt">{tiempoRestante} </td>
       <td className="formularioTxt blanco">{tiempoMas} </td>
       
-      <td className="container-juegos altoJuego formularioTxt">
+      <td className="centrar-boton altoJuego formularioTxt">
         {estado == 0 ? (
           <button className="add-button" onClick={activar}>
             Activar

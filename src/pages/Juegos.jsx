@@ -182,7 +182,12 @@ const Juegos = () => {
   };
 
   useEffect(() => {
-    fetchJuegos()
+    
+    setTimeout(() => {
+      fetchJuegos();
+    }, 300);
+
+
   }, []);
 
   const handleSearchChange = (e) => {

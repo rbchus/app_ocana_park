@@ -165,11 +165,14 @@ console.log(obtenerFechaActual());
         </div>
 
      
-
-
+        <div className='centrar-boton'>
         <button className="edit-btn ancho" type="submit">Crear</button>
+        <p className={status?("ok"):("ok")}> {rta} </p>
+        </div>
+
+        
       </form>
-      <p className={status?("ok"):("ok")}> {rta} </p>
+      
     </div>
   );
 }

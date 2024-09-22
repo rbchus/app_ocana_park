@@ -209,8 +209,7 @@ const FormularioAddTiempo = ({ nino, modal }) => {
         </div>
 
         <hr />
-        <hr />
-        <hr />
+      
         <br />
         <div>
           <h1>
@@ -220,14 +219,19 @@ const FormularioAddTiempo = ({ nino, modal }) => {
           </h1>
         </div>
         <hr />
-        <hr />
-        <hr />
+      
         <br />
+
+        <div className='centrar-boton'>
         <button className={estilo} type="submit" disabled={flag}>
           Agregar
         </button>
+        <p className={status?("ok"):("ok")}> {rta} </p>
+        </div>
+
+       
       </form>
-      <p className={status ? "ok" : "error"}> {} </p>
+  
     </div>
   );
 };

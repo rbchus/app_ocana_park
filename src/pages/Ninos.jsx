@@ -55,7 +55,13 @@ const Ninos = () => {
   };
 
   useEffect(() => {
-    fetchNinos();
+
+    setTimeout(() => {
+      fetchNinos();
+    }, 300);
+
+
+  
   }, []);
 
   const handleSearchChange = (e) => {
