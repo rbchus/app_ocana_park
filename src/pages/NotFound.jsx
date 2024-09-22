@@ -3,10 +3,10 @@ import '../styles/styles.css';
 
 const NotFound  = () => {
   return (
-    <div className='general-vertical'>
-      <h1> Pagina no encotrada</h1>
-     
-      <img className='logo' src="./img/ocanaPark_blue.png" />
+    <div className='container-login vertical'>
+      <div><h1> :( </h1></div>
+      <div><img className='logoGrande' src="./img/ocanaPark_blue.png" /></div>
+      <div>Pagina no encontrada</div>
     </div>
   );
 };

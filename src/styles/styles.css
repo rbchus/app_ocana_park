@@ -76,6 +76,13 @@ hr {
   align-items: flex-start;
 }
 
+.vertical{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .link-menu {
   width: 50%;
   display: flex;
