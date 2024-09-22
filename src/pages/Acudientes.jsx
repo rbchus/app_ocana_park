@@ -50,7 +50,7 @@ const Acudientes = () => {
     getAllAcudientes().then ((response) => {
        // console.log (" response  " + JSON.stringify(response))
 
-       console.log (" * response *    " + JSON.stringify(response))
+      // console.log (" * response *    " + JSON.stringify(response))
 
        setListado(response.datos)
        setErrorMessage(response.message)

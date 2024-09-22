@@ -143,7 +143,7 @@ const TOKEN = getToken();
          });
  
        if (response.status === 200) {
-         console.log ( " RESPONSE SERVICIO delete " + JSON.stringify(response))
+         //console.log ( " RESPONSE SERVICIO delete " + JSON.stringify(response))
          return(response);
          
          

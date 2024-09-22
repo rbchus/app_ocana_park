@@ -6,6 +6,7 @@ import { isAuthenticated } from "../utils/auth";
 
 import Navbar from "../components/Navbar.jsx";
 import DetalleNino from "./DetalleNino.jsx";
+import Loading from "./Loading .jsx";
 import Modal from "./modal.jsx";
 
 const Ninos = () => {
@@ -24,8 +25,8 @@ const Ninos = () => {
   };
 
   const setModal = (tipo, objeto) => {
-    console.log(" ++ DESDE NINOS  tipo ++  " + JSON.stringify(tipo));
-    console.log("  ++ DESDE NINOS objeto ++ " + JSON.stringify(objeto));
+    //console.log(" ++ DESDE NINOS  tipo ++  " + JSON.stringify(tipo));
+    //console.log("  ++ DESDE NINOS objeto ++ " + JSON.stringify(objeto));
     setEmodal(tipo);
     setObejetoNino(objeto);
 
@@ -58,7 +59,7 @@ const Ninos = () => {
 
     setTimeout(() => {
       fetchNinos();
-    }, 300);
+    }, 1000);
 
 
   
@@ -154,9 +155,7 @@ const Ninos = () => {
                 />
               ))
             ) : (
-              <tr>
-                <th> ... CARGANDO DATOS ....</th>
-              </tr>
+              <Loading />
             )}
           </tbody>
 

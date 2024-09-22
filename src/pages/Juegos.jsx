@@ -6,6 +6,7 @@ import "../styles/styles.css";
 import { isAuthenticated } from "../utils/auth";
 
 import DetalleJuego from "./DetalleJuego.jsx";
+import Loading from "./Loading .jsx";
 import Modal from "./modal.jsx";
 
 const Juegos = () => {
@@ -61,7 +62,7 @@ const Juegos = () => {
 
 
   const outJuego = (idJuego, tiempo) => {
-    console.log(" sacar juegio " + idJuego);
+    //console.log(" sacar juegio " + idJuego);
 
     const tiempoActual = new Date();
     const tiempoFormateado = convertirATiempo(
@@ -71,17 +72,19 @@ const Juegos = () => {
     );
 
 
+  
+
     let objetoEnviar = {
       estado: 3,
       tiempo_inicial: tiempoFormateado,
       tiempo_final: sumarTiempo(parseInt(tiempo)),
     };
 
-    console.log(" ENVIAR API     " + JSON.stringify(objetoEnviar));
+    //console.log(" ENVIAR API     " + JSON.stringify(objetoEnviar));
 
     updateJuego(idJuego, objetoEnviar)
       .then((response) => {
-        console.log(" ---- response ----    " + JSON.stringify(response));
+        //console.log(" ---- response ----    " + JSON.stringify(response));
         if (response.status) setRta(response.data.message);
         else setRta(response.message);
       })
@@ -98,9 +101,21 @@ const Juegos = () => {
   
   }
 
+  const setTitulo = (estado) => {
+ //  console.log (" estado " + estado)
+    if (estado == 0) {
+      setErrorMessage(" NIÑOS X ACTIVAR")
+    } else {
+      setErrorMessage(" NIÑOS JUGANDO")
+    }
+
+   
+    
+  }
+
   const setActivo = (juego, tiempo) => {
-    console.log(" ACTIVAR JUEGO " + juego);
-    console.log(" CON EL TIEMPO  " + tiempo);
+    //console.log(" ACTIVAR JUEGO " + juego);
+   // console.log(" CON EL TIEMPO  " + tiempo);
 
     const tiempoActual = new Date();
     const tiempoFormateado = convertirATiempo(
@@ -109,8 +124,8 @@ const Juegos = () => {
         tiempoActual.getSeconds()
     );
 
-    console.log(" hora inicial  " + tiempoFormateado);
-    console.log(" hora final  " + sumarTiempo(parseInt(tiempo)));
+    //console.log(" hora inicial  " + tiempoFormateado);
+  //  console.log(" hora final  " + sumarTiempo(parseInt(tiempo)));
 
     let objetoEnviar = {
       estado: 1,
@@ -120,7 +135,7 @@ const Juegos = () => {
 
     updateJuego(juego, objetoEnviar)
       .then((response) => {
-        console.log(" ---- response ----    " + JSON.stringify(response));
+        //console.log(" ---- response ----    " + JSON.stringify(response));
         if (response.status) setRta(response.data.message);
         else setRta(response.message);
       })
@@ -128,7 +143,7 @@ const Juegos = () => {
         console.log("Error    " + error);
         setRta(response.data.message);
       });
-    console.log(" ENVIAR API     " + JSON.stringify(objetoEnviar));
+   // console.log(" ENVIAR API     " + JSON.stringify(objetoEnviar));
 
     setTimeout(() => {
       fetchJuegos();
@@ -141,8 +156,8 @@ const Juegos = () => {
   };
 
   const setModal = (tipo, objeto) => {
-    console.log(" ++ DESDE NINOS  tipo ++  " + JSON.stringify(tipo));
-    console.log("  ++ DESDE NINOS objeto ++ " + JSON.stringify(objeto));
+    //console.log(" ++ DESDE NINOS  tipo ++  " + JSON.stringify(tipo));
+   // console.log("  ++ DESDE NINOS objeto ++ " + JSON.stringify(objeto));
     setEmodal(tipo);
     setObejetoNino(objeto);
 
@@ -159,6 +174,7 @@ const Juegos = () => {
   };
 
   const fetchJuegos = () => {
+   
     function obtenerFechaActual() {
       const hoy = new Date();
       const año = hoy.getFullYear();
@@ -168,12 +184,13 @@ const Juegos = () => {
       return `${año}-${mes}-${dia} 01:00:00`;
     }
 
-    console.log(" * obtenerFechaActual() *    " + obtenerFechaActual());
+   // console.log(" * obtenerFechaActual() *    " + obtenerFechaActual());
     getAllJuegos(obtenerFechaActual())
       .then((response) => {
         //console.log(" * response *    " + JSON.stringify(response));
         setListado(response.datos);
         setErrorMessage(response.message);
+        setErrorMessage(" NIÑOS X ACTIVAR")
       })
       .catch((error) => {
         console.log("Error servicio  " + error);
@@ -185,10 +202,16 @@ const Juegos = () => {
     
     setTimeout(() => {
       fetchJuegos();
-    }, 300);
+    }, 1000);
 
 
   }, []);
+
+ 
+
+
+  
+
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value.toLowerCase());
@@ -223,12 +246,13 @@ const Juegos = () => {
   }, [navigate]);
 
   const handleJugando = () => {
-    console.log(" * mostrar ninos juegando y terminado *   ");
+   // console.log(" * mostrar ninos juegando y terminado *   ");
     setPintarDatos(1)
   };
 
   const handleActivo = () => {
-    console.log(" * mostrar ninos  por activar*   ");
+    setErrorMessage(" NIÑOS X ACTIVAR")
+   // console.log(" * mostrar ninos  por activar*   ");
     setPintarDatos(0)
   };
 
@@ -303,13 +327,14 @@ const Juegos = () => {
                   final={item.tiempo_final}
                   modal={setActivo}
                   liberar={outJuego}
+                  msjTitulo={setTitulo}
                 />
               ):(<></>)
               ))
             ) : (
-              <tr>
-                <th> ... CARGANDO DATOS ....</th>
-              </tr>
+             
+                <Loading />
+              
             )}
           </tbody>
 

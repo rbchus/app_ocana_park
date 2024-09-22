@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <nav className="sidebar general-horizontal">
-      <img className='logo' src="./img/ocanaPark_white.png" />
+      <img className='logo' src="./img/ocanaPark_white.svg" />
     <ul className='link-menu'>
           <li ><Link  className='font-menu' to="/ninos">ADMIN NIÑOS</Link></li>
           <li ><Link  className='font-menu' to="/juegos">ADMIN JUEGOS</Link></li>
