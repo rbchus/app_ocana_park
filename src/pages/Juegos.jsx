@@ -20,7 +20,7 @@ const Juegos = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [pintarDatos, setPintarDatos] = useState(0);
-
+  const [continuar, setContinuar] = useState(null);
   
   const convertirASegundos = (tiempo) => {
     const [horas, minutos, segundos] = tiempo.split(":").map(Number);
@@ -187,10 +187,18 @@ const Juegos = () => {
    // console.log(" * obtenerFechaActual() *    " + obtenerFechaActual());
     getAllJuegos(obtenerFechaActual())
       .then((response) => {
-        //console.log(" * response *    " + JSON.stringify(response));
-        setListado(response.datos);
-        setErrorMessage(response.message);
-        setErrorMessage(" NIÑOS X ACTIVAR")
+        //console.log(" * response *    " + JSON.stringify(response.status));
+        setContinuar(response.status)
+        if (response.status) {
+          setListado(response.datos);
+          setErrorMessage(response.message);
+          setErrorMessage(" NIÑOS X ACTIVAR")
+
+        } else {
+          setListado([]);
+          setErrorMessage(" TABLA VACIA")
+        }
+       
       })
       .catch((error) => {
         console.log("Error servicio  " + error);
@@ -198,14 +206,21 @@ const Juegos = () => {
       });
   };
 
+ 
   useEffect(() => {
     
     setTimeout(() => {
       fetchJuegos();
-    }, 1000);
+    }, 500);
 
 
   }, []);
+
+  useEffect(() => {
+    
+   //console.log ("continuar " + continuar)
+
+  }, [continuar]);
 
  
 
@@ -224,7 +239,7 @@ const Juegos = () => {
   /*  ******************************************************** */
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  const [itemsPerPage] = useState(15);
 
   // Calcular los índices para los datos paginados
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -311,7 +326,7 @@ const Juegos = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredUsers.length > 0 ? (
+            {continuar ? (
               currentItems.map((item) => (
                 item.estado == pintarDatos? (
                 <DetalleJuego

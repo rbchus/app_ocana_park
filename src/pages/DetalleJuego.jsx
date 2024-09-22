@@ -125,17 +125,17 @@ export default function DetalleJuego({
 
   return (
     <tr className={estilo}>
-      <td className="formularioTxt">{zona.toUpperCase()} </td>
-      <td className="formularioTxt">{nombre.toUpperCase()} </td>
-      <td className="formularioTxt">{apellido.toUpperCase()} </td>
-      <td className="formularioTxt">{celular} </td>
-      <td className="formularioTxt">{time} </td>
-      <td className="formularioTxt">{inicial} </td>
-      <td className="formularioTxt">{final} </td>
-      <td className="formularioTxt">{tiempoRestante} </td>
-      <td className="formularioTxt blanco">{tiempoMas} </td>
+      <td className="formularioTxtDetalle">{zona.toUpperCase()} </td>
+      <td className="formularioTxtDetalle">{nombre.toUpperCase()} </td>
+      <td className="formularioTxtDetalle">{apellido.toUpperCase()} </td>
+      <td className="formularioTxtDetalle">{celular} </td>
+      <td className="formularioTxtDetalle">{time} </td>
+      <td className="formularioTxtDetalle">{inicial} </td>
+      <td className="formularioTxtDetalle">{final} </td>
+      <td className="formularioTxtDetalle">{tiempoRestante} </td>
+      <td className="formularioTxtDetalle blanco">{tiempoMas} </td>
       
-      <td className="centrar-boton altoJuego formularioTxt">
+      <td className="centrar-boton altoJuego formularioTxtDetalle">
         {estado == 0 ? (
           <button className="add-button" onClick={activar}>
             Activar
