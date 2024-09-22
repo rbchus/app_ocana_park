@@ -25,7 +25,7 @@ const TOKEN = getToken();
       } catch (error) {
         if (error.response) {
           if (error.response.status === 400) {
-            return({ status: false,  datos:[] , message: ' Error 400: Solicitud incorrecta.' });
+            return({ status: false,  datos:[] , message: ' Error 400: Solicitud incorrecta.+' });
           } else if (error.response.status === 500) {
             return({ status: false,  datos:[] , message: 'Error 500: Error interno del servidor.'  });
           }
