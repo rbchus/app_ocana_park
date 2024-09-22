@@ -79,8 +79,13 @@ const Login = () => {
             required
           />
         </div>
+        <div className='centrar-boton'>
+
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <button className='add-button ancho' type="submit">Login</button>
+
+        </div>
+        
       </form>
     </div>
     </div>

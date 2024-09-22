@@ -131,11 +131,15 @@ const FormularioBorrarNino = ({ nino, modal }) => {
         </div>
 
      
-
-
+        <div className='centrar-boton'>
         <button className="delete-button ancho" type="submit">Borrar</button>
+        <p className={status?("ok"):("ok")}> {rta} </p>
+        </div>
+
+
+        
       </form>
-      <p className={status?("ok"):("error")}> {} </p>
+     
     </div>
   );
 }

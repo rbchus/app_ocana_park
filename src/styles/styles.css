@@ -159,7 +159,12 @@ button:hover {
   font-size: large;
   text-align: center;
 }
-
+.centrar-boton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .ancho {
   width: 7rem;
   margin: 0.5rem;
@@ -173,6 +178,7 @@ button:hover {
 
 .container-juegos {
   display: flex;
+  justify-content: center;
   align-items: center;
  
 }
