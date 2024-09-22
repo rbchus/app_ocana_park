@@ -22,10 +22,9 @@ export const getAllJuegos = async (fecha) => {
   
           
         if (response.status === 200) {
-          
           return(response.data);
-          
         }
+        
       } catch (error) {
         if (error.response) {
           if (error.response.status === 400) {
@@ -83,6 +82,7 @@ export const getAllJuegos = async (fecha) => {
             }
          });
  
+
        if (response.status === 200) {
          //console.log ( " RESPONSE SERVICIO " + JSON.stringify(response))
          return(response);

@@ -6,8 +6,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50vw; /* Ocupa el ancho completo de la pantalla */
-  height: 50vh; /* Ocupa la altura completa de la pantalla */
+  width: 40vw; /* Ocupa el ancho completo de la pantalla */
+  height: 40vh; /* Ocupa la altura completa de la pantalla */
   background-color: rgba(255, 255, 255, 0.8); /* Opcional: fondo semitransparente */
   z-index: 9999; /* Asegura que esté encima del contenido */
 }
