@@ -42,7 +42,7 @@ export default function  DetalleNino ({id, nombre,  apellido,  genero, celular, 
           nacimiento:  nacimiento,
         }
   
-          modal(3, objetoEnviar )
+          modal(3, objetoEnviar , 2)
          };
 
 
@@ -56,7 +56,7 @@ export default function  DetalleNino ({id, nombre,  apellido,  genero, celular, 
         nacimiento:  nacimiento,
       }
 
-        modal(1, objetoEnviar )
+        modal(1, objetoEnviar, 1 )
        };
  
        const eliminar = () => {
@@ -68,7 +68,7 @@ export default function  DetalleNino ({id, nombre,  apellido,  genero, celular, 
           celular:  celular,
           nacimiento:  nacimiento,
         }
-         modal(2, objetoEnviar )
+         modal(2, objetoEnviar , 1)
         };
 
     const fecha  = (fechaOriginal) => {
@@ -88,12 +88,9 @@ export default function  DetalleNino ({id, nombre,  apellido,  genero, celular, 
 
     return (
         <tr className=''>
-        
-     
-
         <td className="formularioTxtDetalle">{nombre.toUpperCase()} </td>
         <td className="formularioTxtDetalle">{apellido.toUpperCase()} </td>
-        <td  > <img className='iconoGenero' src={`./img/${genero.toLowerCase()}.svg`} /> </td>
+        <td  > <img className='iconoGenero' src={`./img/${genero}.svg`} /> </td>
         <td className="formularioTxtDetalle">{celular} </td>
         <td className="formularioTxtDetalle" >{fecha(nacimiento)} </td>
         <td className="formularioTxtDetalle">{ calcularEdad(nacimiento)} </td>
@@ -103,7 +100,7 @@ export default function  DetalleNino ({id, nombre,  apellido,  genero, celular, 
         
         
 
-        <td className="container-juegos altoJuego formularioTxtDetalle">
+        <td className="container-juegos altoJuego formularioTxt">
         <button className="add-button ancho " onClick={tiempo} >Tiempo</button>
         <button className="edit-button ancho " onClick={editar} >Editar</button>
         <button className="delete-button ancho" onClick={eliminar}>Eliminar</button>
