@@ -13,8 +13,13 @@ import Loading from "./Loading .jsx";
 import Modal from "./modal.jsx";
 
 const Park = () => {
+
+
   const [pantalla, setPantalla] = useState(0);
   const [listado, setListado] = useState([]);
+;
+
+  
   const [errorMessage, setErrorMessage] = useState("");
   const [statusCode, setStatusCode] = useState(null);
   const navigate = useNavigate();
@@ -25,7 +30,9 @@ const Park = () => {
   const [pintarDatos, setPintarDatos] = useState(0);
   const [continuar, setContinuar] = useState(null);
   const [rta, setRta] = useState("");
+  const [loading ,  setLoading] = useState(true);
 
+ 
   const convertirASegundos = (tiempo) => {
     const [horas, minutos, segundos] = tiempo.split(":").map(Number);
     return horas * 3600 + minutos * 60 + (segundos || 0); // Si no hay segundos, asumimos 0
@@ -88,7 +95,7 @@ const Park = () => {
         else setRta(response.message);
       })
       .catch((error) => {
-        console.log("Error    " + error);
+        //console.log("Error    " + error);
         setRta(response.data.message);
       });
 
@@ -133,7 +140,7 @@ const Park = () => {
         else setRta(response.message);
       })
       .catch((error) => {
-        console.log("Error    " + error);
+        //console.log("Error    " + error);
         setRta(response.data.message);
       });
     // console.log(" ENVIAR API     " + JSON.stringify(objetoEnviar));
@@ -173,65 +180,99 @@ const Park = () => {
 */
   };
 
+
+  function obtenerFechaActual() {
+    const hoy = new Date();
+    const año = hoy.getFullYear();
+    const mes = String(hoy.getMonth() + 1).padStart(2, "0"); // Los meses van de 0 a 11, por eso se suma 1
+    const dia = String(hoy.getDate()).padStart(2, "0");
+
+    return `${año}-${mes}-${dia} 01:00:00`;
+  }
+
+
+
   const fetchJuegos = () => {
-    function obtenerFechaActual() {
-      const hoy = new Date();
-      const año = hoy.getFullYear();
-      const mes = String(hoy.getMonth() + 1).padStart(2, "0"); // Los meses van de 0 a 11, por eso se suma 1
-      const dia = String(hoy.getDate()).padStart(2, "0");
-
-      return `${año}-${mes}-${dia} 01:00:00`;
-    }
-
-    // console.log(" * obtenerFechaActual() *    " + obtenerFechaActual());
     getAllJuegos(obtenerFechaActual())
       .then((response) => {
-        //console.log(" * response *    " + JSON.stringify(response.status));
-        setContinuar(response.status);
         if (response.status) {
-          setListado(response.datos);
-          setErrorMessage(response.message);
-          setErrorMessage(" NIÑOS X ACTIVAR");
+          setListado(response.datos.datos);
+          setErrorMessage(response.datos.datos.message || "Juegos cargados exitosamente.");
         } else {
           setListado([]);
-          setErrorMessage(" TABLA VACIA");
+          setErrorMessage(response.datos.datos.message || "No se encontraron juegos.");
         }
       })
       .catch((error) => {
-        //console.log("Error servicio  " + error);
-        setErrorMessage("Error servicio  ");
+        console.error("Error al obtener juegos:", error);
+        setErrorMessage("Error en el servicio. Por favor, inténtelo más tarde.");
       });
   };
 
-  const fetchNinos = () => {
-    
-    getAllNinos()
-      .then((response) => {
-        //console.log(" * response *    " + JSON.stringify(response));
-        setListado(response.datos);
-        setErrorMessage(response.message);
-      })
-      .catch((error) => {
-       // console.log("Error servicio  " + error);
-        setErrorMessage("Error servicio  ");
-      });
+
+  const fetchNinos = async () => {
+    setErrorMessage(""); // Clear previous error messages
+    setLoading(true); // Set loading state to true
+  
+    try {
+      const response = await getAllNinos(); // Call the function to fetch children
+  
+      if (response) {
+        //console.log(" * response  status *    ", response.datos.status);
+        //console.log(" * response  datos *    ", response.datos.datos);
+        //console.log(" * response  message *    ", response.datos.message);
+  
+        if (response.datos.status && Array.isArray(response.datos.datos)) {
+          setListado(response.datos.datos); // Update state with fetched data
+          filteredUsers= response.datos.datos
+          setErrorMessage(response.datos.message); // Update success message
+        } else {
+          setErrorMessage(response.datos.message || "No se encontraron niños."); // Handle no data case
+        }
+      } else {
+        setErrorMessage("No se obtuvo respuesta del servidor."); // Handle null response
+      }
+    } catch (error) {
+      console.error("Error en servicio: ", error);
+      setErrorMessage("Error en el servicio. Por favor, inténtelo más tarde."); // Generic error message
+    } finally {
+      setLoading(false); // Reset loading state
+    }
   };
+
+  /*
+
+  const filteredUsers = Array.isArray(listado)
+  ? listado.filter((user) =>
+      `${user.nombre} ${user.apellido}`.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  : [];
+*/
+
+let  filteredUsers = listado.filter((user) =>
+  `${user.nombre} ${user.apellido}`.toLowerCase().includes(searchTerm)
+ );
 
   useEffect(() => {
   
   }, []);
 
   useEffect(() => {
-    //console.log ("continuar " + continuar)
-  }, [continuar]);
-
+    //console.log ("listado.length  " + listado.length )
+    //console.log ("listado   " + JSON.stringify(listado))
+  
+  
+  }, []);
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  let filteredUsers = listado.filter((user) =>
-    `${user.nombre} ${user.apellido}`.includes(searchTerm)
-  );
+  
+ 
+  
+     
+  
+ 
 
   /*  ******************************************************** */
 
@@ -254,8 +295,13 @@ const Park = () => {
   useEffect(() => {
     if (!isAuthenticated()) {
       navigate("/login");
+    } else {
+      fetchJuegos(); // O cualquier otra función de carga inicial que necesites
     }
   }, [navigate]);
+
+
+
 
   const handleJugando = () => {
     // console.log(" * mostrar ninos juegando y terminado *   ");
@@ -375,7 +421,7 @@ const Park = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredUsers.length > 0 ? (
+              {listado.length  > 0 ? (
                 currentItems.map((item) => (
                   <DetalleNino
                     key={item.id_nino}
@@ -426,7 +472,7 @@ const Park = () => {
               </tr>
             </thead>
             <tbody>
-              {continuar ? (
+              {listado.length  > 0  ? (
                 currentItems.map((item) =>
                   item.estado == pintarDatos ? (
                     <DetalleJuego
@@ -477,6 +523,9 @@ const Park = () => {
         break;
     }
   };
+
+ 
+
   //----------------------
   return (
     <div className="container-all">

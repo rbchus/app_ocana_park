@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { delteNino, } from '../services/ninos';
+import { deleteNino, } from '../services/ninos';
 import './formulario.css';
 
 
@@ -69,23 +69,23 @@ const FormularioBorrarNino = ({ nino, modal }) => {
     }
 
 
-    delteNino(nino.id).then ((response) => {
+    deleteNino(nino.id).then ((response) => {
  
      // console.log (" ---- response deelteNino ----    " + JSON.stringify(response))
 
-        if (response.status) {
-          setRta(response.data.message)
+        if (response.datos.status) {
+          setRta(response.datos.message)
           modal(0, objetoEnviar ,1 )
         }
         else
-        setRta(response.message)
+        setRta(response.datos.message)
   
       
        
    })
    .catch ((error) => {
        console.log ("Error    " + error)
-       setRta(response.data.message)
+       setRta(response.datos.message)
    })
 
     //console.log (" ENVIAR API     " + JSON.stringify(objetoEnviar))

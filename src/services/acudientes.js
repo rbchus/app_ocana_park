@@ -1,8 +1,9 @@
 import axios from "axios";
 import { getToken } from '../utils/auth';
 
+const baseURL = import.meta.env.VITE_API_BASE_URL;
+const URL_ACUDIENTE = `${baseURL}/acudiente/`
 
-const URL_ACUDIENTE = import.meta.env.VITE_URL_ACUDIENTE;
 
 const TOKEN = getToken();
 
