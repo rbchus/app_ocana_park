@@ -1,38 +1,59 @@
 import axios from 'axios';
-const URL_LOGIN = import.meta.env.VITE_URL_LOGIN;
+
+const baseURL = import.meta.env.VITE_API_BASE_URL;
+const URL_LOGIN = `${baseURL}/api/auth/`;
 
 export const loginUser = async (data) => {
-  //console.log("URL_LOGIN: " + URL_LOGIN);
-  //console.log("Data being sent: " + JSON.stringify(data));
-  
   try {
+    // Realizamos la solicitud POST para el login
     const response = await axios.post(URL_LOGIN, data, {
-        headers: {
-          'Content-Type': 'application/json',   // Indica que el cuerpo de la solicitud está en formato JSON
-          'Access-Control-Allow-Origin': '*' 
-           }// Ejemplo de otro encabezado personalizado que puedas necesitar
-        });
-    //console.log("Response from login service: " + JSON.stringify(response.data));
-    return response.data;  // Solo devuelve los datos reales de la respuesta
+      headers: {
+        'Content-Type': 'application/json', // Indicamos que el cuerpo es JSON
+        'Access-Control-Allow-Origin': '*', // Permitimos todas las solicitudes CORS
+      },
+    });
+
+    // Devolvemos solo los datos de la respuesta
+    return {
+      success: true,
+      data: response.data,
+      message: 'Login exitoso',
+    };
+
   } catch (error) {
     console.error("Error during login: ", error);
-    
-    // Puedes personalizar el manejo de errores según lo que esperas
+
+    // Manejo de errores con respuesta del servidor
     if (error.response) {
-      // La solicitud fue hecha y el servidor respondió con un código de estado que
-      // cae fuera del rango de 2xx
-      console.error("Error data: ", error.response.data);
-      console.error("Error status: ", error.response.status);
-      console.error("Error headers: ", error.response.headers);
-      return { success: false, message: 'Error en el servidor', error: error.response.data };
+      const { status, data } = error.response;
+
+      const errorMessages = {
+        400: 'Solicitud incorrecta. Verifica los datos proporcionados.',
+        401: 'Credenciales inválidas. Por favor, intenta nuevamente.',
+        500: 'Error interno del servidor. Inténtalo más tarde.',
+      };
+
+      return {
+        success: false,
+        message: errorMessages[status] || 'Error en el servidor',
+        error: data,
+      };
+
     } else if (error.request) {
-      // La solicitud fue hecha pero no se recibió respuesta
+      // Manejo de errores cuando no hay respuesta del servidor
       console.error("Error request: ", error.request);
-      return { success: false, message: 'No se recibió respuesta del servidor' };
+      return {
+        success: false,
+        message: 'No se recibió respuesta del servidor. Verifica tu conexión.',
+      };
+
     } else {
-      // Algo sucedió al configurar la solicitud que desencadenó un error
+      // Manejo de cualquier otro tipo de error
       console.error('Error message: ', error.message);
-      return { success: false, message: 'Error al realizar la solicitud' };
+      return {
+        success: false,
+        message: 'Error al realizar la solicitud. Inténtalo nuevamente.',
+      };
     }
   }
 };

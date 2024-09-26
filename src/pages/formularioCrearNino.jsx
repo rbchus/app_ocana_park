@@ -75,12 +75,12 @@ function obtenerFechaActual() {
  
       //console.log (" ---- response setNino ----    " + JSON.stringify(response))
 
-        if (response.status) {
-          setRta(response.data.message)
+        if (response.datos.status) {
+          setRta(response.datos.message)
           modal(0, objetoEnviar, 1 )
         }
         else
-        setRta(response.message)
+        setRta(response.datos.message)
   
       
        

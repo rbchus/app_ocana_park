@@ -23,7 +23,7 @@ const Login = () => {
       .then((response) => {
         //console.log("datos loginUser ... " + JSON.stringify(response));
        
-        if (response.auth) {
+        if (response.success) {
           console.log(response.message);
          // console.log ( " TOKEN " + response.data)
           saveToken(response.data);

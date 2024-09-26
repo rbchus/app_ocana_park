@@ -55,15 +55,7 @@ const Ninos = () => {
       });
   };
 
-  useEffect(() => {
-
-    setTimeout(() => {
-      fetchNinos();
-    }, 500);
-
-
-  
-  }, []);
+ 
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value.toLowerCase());

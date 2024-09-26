@@ -143,21 +143,23 @@ const FormularioAddTiempo = ({ nino, modal }) => {
 
     setJuegos(objetoEnviar).then ((response) => {
  
-      //console.log (" ---- response setJuegos ----    " + JSON.stringify(response))
+      //console.log(" * FormularioAddTiempo  status *    ", response.datos.status);
+      //  console.log(" * FormularioAddTiempo  datos *    ", response.datos.datos);
+       // console.log(" * FormularioAddTiempo  message *    ", response.datos.message);
 
-        if (response.status) {
-          setRta(response.data.message)
+        if (response.datos.status) {
+          setRta(response.datos.message)
           modal(0, objetoEnviar , 2)
         }
         else
-        setRta(response.message)
+        setRta(response.datos.message)
   
       
        
    })
    .catch ((error) => {
       // console.log ("Error    " + error)
-       setRta(response.data.message)
+       setRta(response.datos.message)
    })
 
    // console.log(" ENVIAR API     " + JSON.stringify(objetoEnviar));

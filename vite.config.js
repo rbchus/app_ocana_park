@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: 'https://app-ocana-park.onrender.com/',
+  base: '/',
   server: {
     historyApiFallback: true, // Agrega esta línea
   },
