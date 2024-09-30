@@ -71,6 +71,8 @@ const Park = () => {
     return convertirATiempo(rta);
   };
 
+
+
   const outJuego = (idJuego, tiempo) => {
     //console.log(" sacar juegio " + idJuego);
     const tiempoActual = new Date();
@@ -84,7 +86,7 @@ const Park = () => {
       estado: 3,
       tiempo_inicial: tiempoFormateado,
       tiempo_final: sumarTiempo(parseInt(tiempo)),
-    };
+    }
 
     //console.log(" ENVIAR API     " + JSON.stringify(objetoEnviar));
 
@@ -99,10 +101,26 @@ const Park = () => {
         setRta(response.data.message);
       });
 
+
+
+
+
+
     setTimeout(() => {
       fetchJuegos()
     }, 300);
   };
+
+
+
+
+
+
+
+
+
+
+
 
   const setTitulo = (estado) => {
     //  console.log (" estado " + estado)
@@ -265,6 +283,7 @@ let  filteredUsers = listado.filter((user) =>
   }, []);
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
+    paginate(1)
   };
 
   
@@ -464,10 +483,12 @@ let  filteredUsers = listado.filter((user) =>
                 <th>Apellido</th>
                 <th>Celular</th>
                 <th>Tiempo </th>
+                <th> - </th>
                 <th>Inicial</th>
                 <th>Final</th>
                 <th>Restante</th>
                 <th>Extra</th>
+              
                 <th>Acciones</th>
               </tr>
             </thead>
