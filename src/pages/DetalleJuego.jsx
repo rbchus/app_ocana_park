@@ -27,6 +27,7 @@ export default function DetalleJuego({
     modal(id_juego, id_tiempo);
   };
 
+  const [tiempo, setTiempo] = useState("");
   const [tiempoMas, setTiempoMas] = useState("");
   const [tiempoRestante, setTiempoRestante] = useState("");
   let [segundosRestantes, setSegundosRestantes] = useState(0);
@@ -69,6 +70,7 @@ export default function DetalleJuego({
             tiempoActual.getMinutes() * 60 +
             tiempoActual.getSeconds()
         );
+        setTiempo(convertirATiempo(convertirASegundos(tiempoFormateado) - convertirASegundos(inicial)))
         cuentaRegresivaEnSegundos =
           convertirASegundos(final) - convertirASegundos(tiempoFormateado);
         if (cuentaRegresivaEnSegundos > 0) {
@@ -81,6 +83,7 @@ export default function DetalleJuego({
           setEstilo("terminado");
           cuentaDeMas = (convertirASegundos(final) - convertirASegundos(tiempoFormateado)) * -1
           setTiempoMas(convertirATiempo(cuentaDeMas))
+         
         }
 
         //----------------------------------------
@@ -130,10 +133,12 @@ export default function DetalleJuego({
       <td className="formularioTxtDetalle">{apellido.toUpperCase()} </td>
       <td className="formularioTxtDetalle">{celular} </td>
       <td className="formularioTxtDetalle">{time} </td>
+      <td className="formularioTxtDetalle blanco">{tiempo} </td>
       <td className="formularioTxtDetalle">{inicial} </td>
       <td className="formularioTxtDetalle">{final} </td>
       <td className="formularioTxtDetalle">{tiempoRestante} </td>
       <td className="formularioTxtDetalle blanco">{tiempoMas} </td>
+      
       
       <td className="centrar-boton altoJuego formularioTxtDetalle">
         {estado == 0 ? (
