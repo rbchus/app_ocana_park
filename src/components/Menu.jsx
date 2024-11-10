@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import '../styles/styles.css';
+
+import '../styles/stylesv2.css';
 import { logout } from '../utils/auth';
 
 const Menu = ({SetOption}) => {
@@ -20,17 +21,17 @@ const Menu = ({SetOption}) => {
 
 
   return (
-    <nav className="sidebar general-horizontal">
-      <img className='logo' src="./img/ocanaPark_white.svg" />
-    <ul className='link-menu'>
-          <div ><a  className='font-menu' onClick={()=> ir(1)}>
-          <img className='ico' src="./img/nino.svg" /></a></div>
-          <div ><a  className='font-menu' onClick={()=> ir(2)}>
-          <img className='ico' src="./img/juego.svg" /></a></div>
-    </ul>
-  
-    <button className="delete-button ancho" onClick={handleLogout}>CERRAR SESION</button>
-</nav>
+    <header class="navbar">
+        <div class="navbar-brand">
+        <img className='logo' src="./img/ocanaPark_white.svg" />
+        </div>
+        <nav class="navbar-links">
+            <a onClick={()=> ir(1)}>Niños</a>
+            <a  onClick={()=> ir(2)}>Juegos</a>
+            <a onClick={handleLogout}>Cerrar Sesión</a>
+        </nav>
+    </header>
+
   );
 };
 

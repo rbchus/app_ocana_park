@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import Menu from "../components/Menu.jsx";
 import { getAllJuegos, updateJuego } from "../services/juegos.js";
 import { getAllNinos } from "../services/ninos.js";
-import "../styles/styles.css";
+import "../styles/stylesv2.css";
 import { isAuthenticated } from "../utils/auth";
 
-import DetalleJuego from "./DetalleJuego.jsx";
+import Card from "./Card.jsx";
 import DetalleNino from "./DetalleNino.jsx";
 
 import Loading from "./Loading .jsx";
@@ -71,8 +71,6 @@ const Park = () => {
     return convertirATiempo(rta);
   };
 
-
-
   const outJuego = (idJuego, tiempo) => {
     //console.log(" sacar juegio " + idJuego);
     const tiempoActual = new Date();
@@ -102,24 +100,10 @@ const Park = () => {
       });
 
 
-
-
-
-
     setTimeout(() => {
       fetchJuegos()
     }, 300);
   };
-
-
-
-
-
-
-
-
-
-
 
 
   const setTitulo = (estado) => {
@@ -198,7 +182,6 @@ const Park = () => {
 */
   };
 
-
   function obtenerFechaActual() {
     const hoy = new Date();
     const año = hoy.getFullYear();
@@ -208,17 +191,15 @@ const Park = () => {
     return `${año}-${mes}-${dia} 01:00:00`;
   }
 
-
-
   const fetchJuegos = () => {
     getAllJuegos(obtenerFechaActual())
       .then((response) => {
         if (response.status) {
           setListado(response.datos.datos);
-          setErrorMessage(response.datos.datos.message || "Juegos cargados exitosamente.");
+          setErrorMessage(response.datos.datos.message || "Juegos ok.");
         } else {
           setListado([]);
-          setErrorMessage(response.datos.datos.message || "No se encontraron juegos.");
+          setErrorMessage(response.datos.datos.message || "Sin Juegos.");
         }
       })
       .catch((error) => {
@@ -279,24 +260,17 @@ let  filteredUsers = listado.filter((user) =>
     //console.log ("listado.length  " + listado.length )
     //console.log ("listado   " + JSON.stringify(listado))
   
-  
   }, []);
   const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
+    setSearchTerm(e.target.value.toLowerCase());
     paginate(1)
   };
 
-  
- 
-  
-     
-  
- 
 
   /*  ******************************************************** */
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(15);
+  const [itemsPerPage] = useState(10);
 
   // Calcular los índices para los datos paginados
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -353,10 +327,10 @@ let  filteredUsers = listado.filter((user) =>
     switch (opc) {
       case 1:
         return (
+
+
           <div className="container-head">
-            <div>
-              <h2>Niños</h2>
-            </div>
+            
             <div className="ancho25">
               <h3>{errorMessage}</h3>
             </div>
@@ -364,10 +338,11 @@ let  filteredUsers = listado.filter((user) =>
             <div className="ancho25">
               <input
                 className="formularioTxt"
-                type="text"
+                type="text" 
                 placeholder="Buscar por nombre o apellido"
                 value={searchTerm}
                 onChange={handleSearchChange}
+                
               />
             </div>
 
@@ -385,9 +360,7 @@ let  filteredUsers = listado.filter((user) =>
       case 2:
         return (
           <div className="container-head">
-            <div>
-              <h2>Juegos</h2>
-            </div>
+  
             <div className="ancho20">
               <h3>{errorMessage}</h3>
             </div>
@@ -404,13 +377,13 @@ let  filteredUsers = listado.filter((user) =>
 
             <div className="ancho20">
               <button className="add-button" onClick={handleActivo}>
-                Por Inicar
+               Activar
               </button>
             </div>
 
             <div className="ancho20">
               <button className="delete-button" onClick={handleJugando}>
-                Niños Jugando
+                Jugando
               </button>
             </div>
           </div>
@@ -422,10 +395,15 @@ let  filteredUsers = listado.filter((user) =>
     }
   };
 
+
+
+
   const pintarTabla = (opc) => {
     switch (opc) {
       case 1:
         return (
+          <div> 
+            <br/>
           <table>
             <thead>
               <tr className="alto">
@@ -471,32 +449,19 @@ let  filteredUsers = listado.filter((user) =>
               ))}
             </div>
           </table>
+          </div>
         );
         break;
       case 2:
         return (
-          <table>
-            <thead>
-              <tr className="alto">
-                <th>Zona</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Celular</th>
-                <th>Tiempo </th>
-                <th> - </th>
-                <th>Inicial</th>
-                <th>Final</th>
-                <th>Restante</th>
-                <th>Extra</th>
-              
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
+          <div> 
+            <br/>
+          <div class="cards">
+          
               {listado.length  > 0  ? (
                 currentItems.map((item) =>
                   item.estado == pintarDatos ? (
-                    <DetalleJuego
+                    <Card
                       id_juego={item.id_juego}
                       estado={item.estado}
                       id_tiempo={item.id_tiempo}
@@ -518,9 +483,12 @@ let  filteredUsers = listado.filter((user) =>
               ) : (
                 <Loading />
               )}
-            </tbody>
+         
 
-            <div className="pagination">
+         
+          </div>
+
+          <div className="pagination">
               {[...Array(totalPages)].map((_, index) => (
                 <button
                   key={index}
@@ -531,7 +499,8 @@ let  filteredUsers = listado.filter((user) =>
                 </button>
               ))}
             </div>
-          </table>
+
+          </div>
         );
         break;
 
@@ -549,11 +518,12 @@ let  filteredUsers = listado.filter((user) =>
 
   //----------------------
   return (
-    <div className="container-all">
+    <>
+ 
       <Menu SetOption={SetOption} />
       {pintarHead(pantalla)}
       <hr />
-      <div className="container-table">
+      <main class="main-content">
         {pintarTabla(pantalla)}
         <Modal
           isOpen={isModalOpen}
@@ -562,8 +532,9 @@ let  filteredUsers = listado.filter((user) =>
           nino={objetoNino}
           modal={setModal}
         />
-      </div>
-    </div>
+      </main>
+   
+    </>
   );
 };
 

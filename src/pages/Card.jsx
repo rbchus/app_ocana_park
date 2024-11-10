@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function DetalleJuego({
+export default function Card({
   id_juego,
   estado,
   id_tiempo,
@@ -27,6 +27,7 @@ export default function DetalleJuego({
     modal(id_juego, id_tiempo);
   };
 
+  const [barra, setBarra] = useState(0);
   const [tiempo, setTiempo] = useState("");
   const [tiempoMas, setTiempoMas] = useState("");
   const [tiempoRestante, setTiempoRestante] = useState("");
@@ -75,11 +76,11 @@ export default function DetalleJuego({
           convertirASegundos(final) - convertirASegundos(tiempoFormateado);
         if (cuentaRegresivaEnSegundos > 0) {
           setTiempoRestante(convertirATiempo(cuentaRegresivaEnSegundos));
-          setMsgEstado("...Jugando");
+          setMsgEstado("En Juego");
           setEstilo("jugando");
         } else {
           setTiempoRestante(convertirATiempo(0));
-          setMsgEstado("...Terminado");
+          setMsgEstado("Terminado");
           setEstilo("terminado");
           cuentaDeMas = (convertirASegundos(final) - convertirASegundos(tiempoFormateado)) * -1
           setTiempoMas(convertirATiempo(cuentaDeMas))
@@ -111,7 +112,7 @@ export default function DetalleJuego({
         convertirASegundos(final) - convertirASegundos(tiempoFormateado);
       if (cuentaRegresivaEnSegundos > 0) {
         setTiempoRestante(convertirATiempo(cuentaRegresivaEnSegundos));
-        setMsgEstado("Jugando");
+        setMsgEstado("En Juego");
         setEstilo("jugando");
       } else {
         setTiempoRestante(convertirATiempo(0));
@@ -126,37 +127,81 @@ export default function DetalleJuego({
     }
   }, []);
 
+  const acercar = (n) => {
+    if (n <= 10)
+       return 10
+       else if (n <= 20)
+        return 20
+       else if (n <= 30)
+        return 30
+       else if (n <= 40)
+        return 40
+       else if (n <= 50)
+        return 50
+       else if (n <= 60)
+        return 60
+       else if (n <= 70)
+        return 70
+       else if (n <= 80)
+        return 80
+       else if (n <= 80)
+        return 80
+       else if (n <= 100)
+        return 100
+
+  }
+
+  useEffect(() => {
+    let porcentaje = 0
+    let tiempoComprado = convertirASegundos(final) - convertirASegundos(inicial)
+    let  tiempoUsado = convertirASegundos(tiempo) 
+    if (tiempoUsado >= tiempoComprado) {
+      porcentaje = 100
+    }else {
+      porcentaje = (tiempoUsado * 100 ) / tiempoComprado
+
+    }
+    console.log (" porcentaje " + acercar(Math.round(porcentaje))  )
+    
+    setBarra( acercar(Math.round(porcentaje)) )
+    
+}, [tiempo])
+
   return (
-    <tr className={estilo}>
-      <td className="formularioTxtDetalle">{zona.toUpperCase()} </td>
-      <td className="formularioTxtDetalle">{nombre.toUpperCase()} </td>
-      <td className="formularioTxtDetalle">{apellido.toUpperCase()} </td>
-      <td className="formularioTxtDetalle">{celular} </td>
-      <td className="formularioTxtDetalle">{time} </td>
-      <td className="formularioTxtDetalle blanco">{tiempo} </td>
-      <td className="formularioTxtDetalle">{inicial} </td>
-      <td className="formularioTxtDetalle">{final} </td>
-      <td className="formularioTxtDetalle">{tiempoRestante} </td>
-      <td className="formularioTxtDetalle blanco">{tiempoMas} </td>
-      
-      
-      <td className="centrar-boton altoJuego formularioTxtDetalle">
-        {estado == 0 ? (
+    <section class="dashboard-section">
+  
+    <div class="game-progress-card">
+        <div class="game-header">
+            <h5>{nombre.toUpperCase()} {apellido.toUpperCase()} </h5>
+             <div>
+             {estado == 0 ? (
           <button className="add-button" onClick={activar}>
             Activar
           </button>
         ) : (
-          <h4> {msgEstado} </h4>
+         <></>
         )}
 
         {estilo == "terminado" ? (
           <button className="delete-button" onClick={sacarNino}>
-            X
+            Sacar
           </button>
         ) : (
           <></>
         )}
-      </td>
-    </tr>
+             </div>
+        </div>
+        <div class="game-info">
+            <p><strong>{zona.toUpperCase()}:</strong> <span> | <strong></strong> {time}</span></p>
+            <p><strong>Restante:</strong> <span> | <strong></strong>{tiempoRestante}</span></p>
+        </div>
+    
+        <div class="progress-bar">
+            <div class="progress" data-progress={barra}></div>
+        </div>
+        <p class="time-remaining"><strong class={estilo}> {msgEstado} </strong> 
+        <span class={estilo}>{estilo == "terminado" ? tiempoMas : tiempo}</span> </p>
+    </div>
+</section>
   );
 }
