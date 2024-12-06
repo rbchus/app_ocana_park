@@ -246,6 +246,8 @@ button:hover {
   justify-content: space-around;
 }
 .pagination {
+  width: 60%;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   margin-top: 1rem;

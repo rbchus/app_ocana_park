@@ -239,7 +239,7 @@ const Juegos = () => {
   /*  ******************************************************** */
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(15);
+  const [itemsPerPage] = useState(30);
 
   // Calcular los índices para los datos paginados
   const indexOfLastItem = currentPage * itemsPerPage;

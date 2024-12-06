@@ -270,7 +270,7 @@ let  filteredUsers = listado.filter((user) =>
   /*  ******************************************************** */
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  const [itemsPerPage] = useState(30);
 
   // Calcular los índices para los datos paginados
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -437,7 +437,9 @@ let  filteredUsers = listado.filter((user) =>
               )}
             </tbody>
 
-            <div className="pagination">
+           
+          </table>
+          <div className="pagination">
               {[...Array(totalPages)].map((_, index) => (
                 <button
                   key={index}
@@ -448,7 +450,6 @@ let  filteredUsers = listado.filter((user) =>
                 </button>
               ))}
             </div>
-          </table>
           </div>
         );
         break;
