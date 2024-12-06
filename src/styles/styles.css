@@ -246,22 +246,24 @@ button:hover {
   justify-content: space-around;
 }
 .pagination {
-  width: 60%;
+  width: 80%;
+  height: 100%;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
-  margin-top: 1rem;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
 }
 
 .pagination button {
-  margin: 0 5px;
-  padding: 10px 15px;
-  border: none;
-  background-color: #4caf50;
-  color: white;
-  cursor: pointer;
-  border-radius: 4px;
   width: 50px;
+  height: 40px;
+  background-color: #4caf50;
+  border: 1px solid #b4b4b4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .pagination button.active {
